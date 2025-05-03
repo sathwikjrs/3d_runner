@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runner Game</title>
+
+  <style>
+    *{
+      font-family: 'Courier New', Courier, monospace;
+    }
+    body {
+     /* background-color: black; */
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      position: absolute;
+    }
+    #score-container{
+      position:absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 2em;
+      z-index: 2;
+      font-weight: 750;
+    }
+    #level-container{
+      position:absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 2em;
+      z-index: 2;
+      font-weight: 750;
+    }
+    .menu-container{
+      position: absolute;
+      z-index:2;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 50%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-around;
+      background: linear-gradient(to right bottom,
+      rgba(255,255,255,0.7),
+      rgba(255,255,255,0.3)
+      );
+      backdrop-filter: blur(1em);
+      border-radius: 3em;
+      padding: 2em;
+    }
+    .menu-container:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <audio  id="outAudio">
+    <source src ="assets/sounds/out.mp3" type = "audio/mpeg">
+  </audio>
+  <audio  id="jumpAudio">
+    <source src ="assets/sounds/jump.mp3" type = "audio/mpeg">
+  </audio>
+  <audio  id="rewardAudio">
+    <source src ="assets/sounds/reward.mp3" type = "audio/mpeg">
+  </audio>
+  <audio  id="bgAudio">
+    <source src ="assets/sounds/bg-music.mp3" type = "audio/mpeg">
+  </audio>
+
+  <div class="menu-container">
+    <h1>Welcome to Runner Game !</h1>
+    <h2>Click here to Start</h2>
+    <h3>Use Arrow Keys to go Left< , Right>,Jump^. </h3>
+    <h3>Collect rewards for bonus points</h3>
+  </div>
+
+  <div id = "score-container">
+    <div class="score" id = "max-score">
+      Max Score: <span>0</span>
+    </div>
+    <div class="score" id = "curr-score">
+      Curr Score: <span>0</span>
+    </div>
+  </div>
+
+  <div id="level-container">
+    <div>Level 1</div>
+  </div>
+
+  <canvas class="webgl"></canvas>
+
+  <script>
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        //Hidden
+      }else{
+        //user is here
+        location.reload();
+      }
+    })
+  </script>
+
+   <!-- three.js -->
+  <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+          }
+        }
+  </script>
+
+  <!-- gsap -->
+  <script src = "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="main.js" type="module"></script>
+</body>
+
+</html>
